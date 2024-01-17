@@ -26,7 +26,7 @@ namespace WebAPI.Service
 				_db.SaveChanges();
 			}
 		}
-		public List<Department> GetAllProduct()
+		public List<Department> GetAll()
 		{
 			return _db.Departments.ToList();
 		}

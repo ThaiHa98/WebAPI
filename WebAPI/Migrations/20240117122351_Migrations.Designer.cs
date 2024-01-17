@@ -11,8 +11,8 @@ using WebAPI.DataSql;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(WebDbContext))]
-    [Migration("20231208161315_Migration1")]
-    partial class Migration1
+    [Migration("20240117122351_Migrations")]
+    partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -22,10 +22,26 @@ namespace WebAPI.Controller
 			return _userService.Register(user);
 		}
 
-		[HttpPost("/login")]
-		public IActionResult login(LoginDTo loginDTo)
-		{
-			return Ok(_userService.login(loginDTo));
-		}
-	}
+        [HttpPost("/login")]
+        public IActionResult Login(LoginDTo loginDTo)
+        {
+            if (_userService != null)
+            {
+                bool isAuthenticated = _userService.Login(loginDTo);
+
+                if (isAuthenticated)
+                {
+                    return Ok(new { Message = "Login successful" });
+                }
+                else
+                {
+                    return Unauthorized(new { Message = "Invalid email or password" });
+                }
+            }
+            else
+            {
+                return StatusCode(500, new { Message = "Internal server error" });
+            }
+        }
+    }
 }
